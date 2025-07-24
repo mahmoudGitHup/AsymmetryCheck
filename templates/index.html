@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AsymmetriCheck</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Your custom CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='logo.png') }}" type="image/png">
+
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="header-content">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Site Logo" class="logo">
+    <h1 class="site-title"><strong>AsymmetriCheck</strong> : Facial Asymmetry Detection</h1>
+  </div>
+  
+  <!-- Hamburger Button -->
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- Hidden Menu -->
+  <nav class="side-menu" id="sideMenu">
+    <ul>
+      <li><a href="C:\Users\user\PycharmProjects\PythonProject3\templates\index.html">Home</a></li>
+      <li><a href="#">Q&A</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("sideMenu");
+    menu.classList.toggle("open");
+  }
+</script>
+
+<br>
+  <form id="scanner_form" class="container rounded-3 mb-5" action="/predict" method="POST" enctype="multipart/form-data">
+    <fieldset class="BOX p-4">
+
+      <div class="row justify-content-center mb-3">
+      <div>
+        <!--box's text-->
+        <h1>Insert an image</h1>
+        <br>
+      </div>
+        <div class="col-md-6 text-center">
+          <!-- File Input -->
+          <input class="form-control" id="upload_image" type="file" name="image" 
+                 accept="image/png, image/jpg, image/jpeg" required
+                 placeholder="Choose a photo of yourself" onchange="compressImage(event)">
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-md-3 d-grid">
+          <!-- Submit Button -->
+          <button class="btn btn-primary" id="submit_button" type="submit">
+            <span id="button_text">Scan</span>
+            <span id="loading_spinner" class="spinner-border spinner-border-sm" 
+                  role="status" aria-hidden="true" style="display: none;"></span>
+          </button>
+        </div>
+      </div>
+    </fieldset>
+
+
+    <div class="col-12 text-center mt-5 pt-3">
+
+        <h2 class="mb-3">Tips to Get the Best Out of FaceSymAI</h2>
+        <p class="lead">Maximize the accuracy of your facial symmetry analysis with these simple steps.</p>
+    </div>
+    <div class="container mt-4">
+    <div class="row text-center">
+
+    <div class="col-md-3">
+      <fieldset class="mini_BOX p-3">
+        <legend>Use Good Lighting</legend>
+        <p class="card-text">
+          Ensure your face is well-lit, 
+          with even lighting to avoid shadows that might distort y
+          our facial features. Natural daylight is preferable, 
+          facing towards the light source.
+        </p>
+      </fieldset>
+    </div>
+
+    <div class="col-md-3">
+      <fieldset class="mini_BOX p-3">
+        <legend>Frontal Pose</legend>
+        <p class="card-text">
+          Take the photo with your face directly facing 
+          the camera, maintaining a neutral expression. 
+          This position helps the AI accurately assess 
+          your facial symmetry.
+        </p>
+
+      </fieldset>
+    </div>
+
+    <div class="col-md-3">
+      <fieldset class="mini_BOX p-3">
+        <legend>Clear Background</legend>
+        <p class="card-text">
+          Use a simple, uncluttered background to 
+          ensure there's a clear contrast between your 
+          face and the surroundings. This helps the AI 
+          focus on analyzing your facial features 
+          without distractions.
+        </p>
+      </fieldset>
+    </div>
+
+    <div class="col-md-3">
+      <fieldset class="mini_BOX p-3">
+        <legend>Avoid Obstructions</legend>
+        <p class="card-text">
+          Make sure your hair is pulled back and that 
+          glasses or other accessories are removed. 
+          Obstructions can interfere with the symmetry 
+          analysis, affecting the accuracy of the results.
+        </p>
+      </fieldset>
+    </div>
+
+  </div>
+  </div>
+  </form>
+</body>
