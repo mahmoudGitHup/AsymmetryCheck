@@ -1,0 +1,389 @@
+/* ====== General Styles ====== */
+
+body {
+
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f7fc;
+  margin: 0;
+  padding: 0;
+  color: #090909;
+}
+
+a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+a:hover {
+  color: #0056b3;
+}
+
+/* ====== Header ====== */
+
+.site-header {
+  position: relative;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  z-index: 1100;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 1;
+  min-width: 0;
+}
+
+.logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.site-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ====== Hamburger Button ====== */
+
+.hamburger {
+  width: 30px;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 5px;
+  z-index: 1200;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  background-color: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Accessible focus */
+.hamburger:focus {
+  outline: 3px solid #007bff;
+}
+
+/* ====== Side Menu ====== */
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -280px;
+  width: 280px;
+  height: 100vh;
+  background-color: #fff;
+  box-shadow: -3px 0 10px rgba(0,0,0,0.15);
+  padding-top: 60px;
+  transition: right 0.3s ease;
+  z-index: 1150;
+  overflow-y: auto;
+}
+
+.side-menu.open {
+  right: 0;
+}
+
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-menu ul li {
+  border-bottom: 1px solid #eee;
+}
+
+.side-menu ul li a {
+  display: block;
+  padding: 15px 25px;
+  color: #333;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.side-menu ul li a:hover,
+.side-menu ul li a:focus {
+  background-color: #f0f0f0;
+  color: #007bff;
+  outline: none;
+}
+
+/* ====== Form Styles ====== */
+
+.BOX {
+  background: linear-gradient(to right, #8b81ee, #948af1, #9d93f5);
+  box-shadow: 0 2px 10px rgb(0 0 0 / 0.1);
+  border-radius: 12px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.BOX h1 {
+  font-weight: 700;
+  color: #fff2f2;
+}
+
+#upload_image {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease;
+}
+
+#upload_image:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.4);
+}
+
+/* Button styles */
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 10px 0;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+  transform: scale(1.03);
+}
+
+/* Spinner inside button */
+.spinner-border {
+  margin-left: 6px;
+}
+
+/* ====== Transitions and Interactions ====== */
+
+button:focus, a:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* ====== Responsive ====== */
+
+@media (max-width: 576px) {
+  .site-header {
+    padding: 10px 15px;
+  }
+
+  .site-title {
+    font-size: 1.2rem;
+  }
+
+  .side-menu {
+    width: 220px;
+    padding-top: 50px;
+  }
+
+  .hamburger {
+    position: relative;
+  }
+}
+
+  .mini_BOX {
+    background: linear-gradient(to right, #8b81ee, #948af1, #9d93f5);
+    border: 2px solid black;
+    border-radius: 12px;
+    color: white;
+    padding: 20px;
+    height: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .mini_BOX legend {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .card-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  /* Ensure equal height across columns */
+  .row.text-center > div {
+    display: flex;
+  }
+
+  .mini_BOX {
+    flex-grow: 1;
+  }
+
+
+
+  .mini_box legend {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+ 
+ /* body {
+      background: #fafafa;
+      font-family: sans-serif;
+      text-align: center;
+      padding-top: 50px;
+    }
+.upload-btn {
+      background-color: white;
+      color: black;
+      padding: 14px 28px;
+      font-size: 16px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+.site-logo {
+  width: 100px;
+  height: auto;
+  display: block;
+  margin: 20px auto; /* centers it */
+/* }
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+/* Header Container */
+/* .site-header {
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* pushes hamburger to right */
+  /* position: relative;
+  height: 60px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+} */
+
+/* Logo + Title container */
+/* .header-content {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo {
+  height: 40px;
+} */
+
+/* Hamburger Icon */
+/* .hamburger {
+  width: 30px;
+  height: 25px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  z-index: 1001; /* above menu */
+/* }
+
+.hamburger span {
+  height: 3px;
+  width: 100%;
+  background: black;
+  border-radius: 2px;
+  transition: all 0.3s;
+} */ 
+
+/* Side Menu */
+/* .side-menu {
+  position: fixed;
+  top: 0;
+  right: -350px; /* hidden by default */
+  /* width: 350px;
+  height: 100%;
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
+  transition: right 0.3s ease;
+  z-index: 1000;
+}
+
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 50px;
+}
+
+.side-menu li {
+  margin: 20px 0;
+}
+
+.side-menu a {
+  color: radial-gradient(circle at center, #ffffff 0%, #050505 100%);;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+
+.side-menu a:hover {
+  text-decoration: underline;
+} */
+
+/* Menu open class */
+/* .side-menu.open {
+  right: 0;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 40px;
+  margin-right: 15px;
+}
+
+.site-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+
+.BOX{
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background: radial-gradient(circle at center, #ffffff 0%, #040504 100%);;
+  border-radius: 1rem;;
+  padding-top: 3rem !important;
+  padding-bottom: 5rem !important;
+  border: 2px solid #ddd;
+
+  color: black;
+  box-sizing: border-box;
+
+} */ 
