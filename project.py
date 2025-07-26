@@ -60,7 +60,7 @@ val_test_transform = transforms.Compose([
 ])
 
 model = EmotionCNN()
-model.load_state_dict(torch.load("C:\\Users\\user\\PycharmProjects\\PythonProject3\\face_classification_model.pth",
+model.load_state_dict(torch.load("static\face_classification_model.pth",
                                   map_location=torch.device('cpu'),))
 model.eval()
 
