@@ -6,6 +6,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 from werkzeug.utils import secure_filename
 import os 
+import logging
+logging.basicConfig(level=logging.DEBUG)
 
 app = Flask(__name__)
 
@@ -75,24 +77,35 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 def index():
     return render_template('index.html')
 
+
 @app.route('/predict', methods=['POST'])
 def predict_route():
-    file = request.files['image']  # make sure name="image" in your form
-    filename = secure_filename(file.filename)
-    filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-    file.save(filepath)
+    try:
+        file = request.files['image']
+        if file.filename == "":
+            return "No selected file", 400
 
-    # Process the image
-    image = Image.open(filepath).convert("RGB")
-    img_tensor = val_test_transform(image).unsqueeze(0)
-    with torch.no_grad():
-        outputs = model(img_tensor)
-        _, predicted = torch.max(outputs, 1)
-        result = class_names[predicted.item()]
+        filename = secure_filename(file.filename)
+        filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        file.save(filepath)
 
-    image_url = 'uploads/' + filename
-    return render_template("result.html", result=result, image_url=image_url)
+        app.logger.debug(f"Saved uploaded image to: {filepath}")
 
+        # Open & process image
+        image = Image.open(filepath).convert("RGB")
+        img_tensor = val_test_transform(image).unsqueeze(0)
+
+        with torch.no_grad():
+            outputs = model(img_tensor)
+            _, predicted = torch.max(outputs, 1)
+            result = class_names[predicted.item()]
+
+        image_url = 'uploads/' + filename
+        return render_template("result.html", result=result, image_url=image_url)
+
+    except Exception as e:
+        app.logger.error(f"Error in predict_route: {e}")
+        return f"Internal Server Error: {e}", 500
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port, debug=True)
