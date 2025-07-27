@@ -62,7 +62,7 @@ val_test_transform = transforms.Compose([
 ])
 
 model = EmotionCNN()
-    model.load_state_dict(torch.load("model/face_classification_model.pth", map_location=torch.device('cpu')))
+model.load_state_dict(torch.load("model/face_classification_model.pth", map_location=torch.device('cpu')))
 
 model.eval()
 
